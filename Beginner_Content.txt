@@ -12,3 +12,6 @@ Contents:
 4.Javascript variables - let,var and const 
 5.Javascript operators
 6.Data types in Js
+7.Comparison and logical operator 
+8.If else condition 
+9.Switch case in Js 
