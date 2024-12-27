@@ -28,4 +28,10 @@ Contents:
 20.Return in function 
 21.Global vs local variable 
 22.Anonymous function 
+23.Immediately invoked function 
+24.Object in javascript 
+25.Properties in javascript 
+26.Methods in objects 
+27."this" keyword
+28.Math object 
 
