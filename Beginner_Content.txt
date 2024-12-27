@@ -15,3 +15,17 @@ Contents:
 7.Comparison and logical operator 
 8.If else condition 
 9.Switch case in Js 
+10.While,do-while,and for loop 
+11.Break,continue and nested loop 
+12.Alert,prompt and confirm
+13.Type conversion
+14.String manipulation
+15.Array
+16.Operations on array 
+17.Functions in Js
+18.Parameters and arguments
+19.The arguments object
+20.Return in function 
+21.Global vs local variable 
+22.Anonymous function 
+
