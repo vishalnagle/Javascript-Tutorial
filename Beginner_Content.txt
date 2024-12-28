@@ -34,4 +34,25 @@ Contents:
 26.Methods in objects 
 27."this" keyword
 28.Math object 
+29.Generate random number
+30.Date object 
+31."new" keyword 
+32.Object property getters and setters 
+33.Object constructor function 
+34.Object prototypes
+35.Nested object 
+36.Hoisting 
+37.Document Object Model(DOM) 
+38.Select an element by "id"
+39.Select an element by "class name" 
+40.Select an element by "tag name" 
+41.Query selector 
+42.Traversing element in js 
+43.innerHTML 
+44.Create and append element 
+45.Insert before
+46.Remove child element 
+47.Clone element 
+48.Replace element 
+49.Insert adjacent HTML 
 
