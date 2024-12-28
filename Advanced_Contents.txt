@@ -1,0 +1,12 @@
+Tutorial URL - https://www.youtube.com/watch?v=Fmqhsd8R29s&list=PLjpp5kBQLNTSTU2xZf3cmD3Bv5foEkfD-&index=5
+
+Advanced Javascript Topics:
+
+51. Change Attribute
+52. Change Inline Style
+53. Get computed css 
+54. Change css classes
+55. Get width and height of an element 
+56. DOM events
+57. Remove event listener in js 
+58. Page load events in js 

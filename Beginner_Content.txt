@@ -4,7 +4,7 @@ Javascript Complete Tutorial Beginner To Advanced
 Beginner Tutorial URL - https://www.youtube.com/watch?v=1kUoOLZ0g6g&list=PLjpp5kBQLNTSTU2xZf3cmD3Bv5foEkfD-&index=4
 MDN Javascript URL - https://developer.mozilla.org/en-US/docs/Web/JavaScript
 
-Contents:
+Beginner Javascript Topics:
 
 1.Javascript Intro
 2.Hello world program
