@@ -1,0 +1,146 @@
+Beginner JavaScript Topics
+
+These topics form the foundation of JavaScript programming:
+
+(1) Basics of JavaScript
+Syntax and Comments
+Variables (var, let, const)
+Data Types (string, number, boolean, undefined, null, symbol)
+Operators (Arithmetic, Assignment, Comparison, Logical, Conditional (ternary))
+
+(2). Control Flow
+If-else statements
+Switch-case statements
+Loops: for, while, do-while
+Break and continue statements
+
+(3). Functions
+Declaring and invoking functions
+Parameters and arguments
+Function expressions and arrow functions
+Default parameters
+Function scope and closures
+
+
+(4). Objects and Arrays
+Object literals
+Accessing and modifying object properties
+Array basics (CRUD operations, iteration)
+Common array methods: map(), filter(), reduce(), forEach(), find()
+
+(5). DOM Manipulation
+Document Object Model (DOM) structure
+Selecting elements (getElementById, querySelector, etc.)
+Modifying DOM elements (text, attributes, styles)
+Event handling (addEventListener, inline events)
+
+(6). Error Handling
+Try-catch-finally
+Throwing custom errors
+
+(7). Basic Asynchronous JavaScript
+Callbacks
+Introduction to Promises (then, catch, finally)
+Fetch API basics for HTTP requests
+
+(8). ES6+ Features
+Template literals
+Destructuring assignment
+Spread/rest operators
+Let, const, and block scoping
+Arrow functions
+
+-------------------------------------------------------------------------------------------
+
+Advanced JavaScript Topics
+
+For more in-depth JavaScript knowledge:
+
+(1). Advanced Functions
+Higher-order functions
+Closures in detail
+Recursion
+Function currying
+Debouncing and throttling
+
+
+(2). Prototypes and Object-Oriented JavaScript
+Prototypal inheritance
+Object.create and Object.assign
+Classes and constructors
+Static and instance methods
+this keyword and call, apply, bind methods
+
+
+(3). Advanced Array Methods
+Deep dive into reduce(), flat(), flatMap()
+Array-like objects (arguments, NodeList)
+
+(4). Advanced Asynchronous JavaScript
+Promises in-depth
+Async/await
+Working with APIs and Axios
+Event loop and microtasks
+Web Workers
+
+
+(5). JavaScript Design Patterns
+Module pattern
+Singleton pattern
+Observer pattern
+Factory pattern
+MVC (Model-View-Controller)
+
+
+(6). Error and Exception Handling
+Custom error classes
+Handling errors in asynchronous code
+Debugging with console and breakpoints
+
+
+(7). Performance Optimization
+Memory leaks
+Garbage collection
+Lazy loading
+Efficient DOM manipulation
+
+(8). Advanced ES6+ Features
+Generators and Iterators
+Sets and Maps
+WeakSet and WeakMap
+Symbols and their use cases
+
+
+(9). JavaScript Engines
+How JavaScript engines (like V8) work
+Just-in-time (JIT) compilation
+Abstract syntax trees (AST)
+
+(10). Security in JavaScript
+Cross-Site Scripting (XSS)
+Cross-Origin Resource Sharing (CORS)
+Content Security Policy (CSP)
+
+(11). Module Systems
+CommonJS and AMD
+ES Modules (import and export)
+Dynamic imports
+
+(12). Testing
+Unit testing with Jest or Mocha
+Mocking in tests
+End-to-end testing tools like Cypress
+
+(13). Real-time and Networking
+WebSockets
+Server-Sent Events (SSE)
+WebRTC for peer-to-peer communication
+
+(14). TypeScript Basics
+Adding type safety to JavaScript
+Interfaces and Generics
+
+(15). Advanced Concepts
+Functional programming principles
+Reactive programming with RxJS
+State management in large-scale apps
