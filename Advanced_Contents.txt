@@ -10,3 +10,16 @@ Advanced Javascript Topics:
 56. DOM events
 57. Remove event listener in js 
 58. Page load events in js 
+59. Mouse Events 
+60. Keyword Events 
+61. Scroll Events 
+62. Input Events 
+63. Event bubbling and event capturing 
+64. Prevent default
+65. Browser object model 
+66. Window object in js 
+67. Set time out and time interval 
+68. Location object 
+69. Navigator object 
+70. Screen object
+
