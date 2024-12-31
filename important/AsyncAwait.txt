@@ -1,0 +1,138 @@
+Asynchronous Javascript Fundamentals
+
+Ajay Suneja Tutorial : https://www.youtube.com/watch?v=bWaucYA1YRI
+
+Basic Asynchronous JavaScript
+
+JavaScript is single-threaded, meaning it executes one line of code at a time. 
+However, it can handle asynchronous operations (e.g., fetching data from a server) using features like callbacks, promises, and async/await.
+
+Example:
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Async operation (timeout) complete");
+}, 2000);
+
+console.log("End");
+
+
+---------------------------------------------------------------
+
+Async Await
+
+async and await simplify working with promises. 
+An async function always returns a promise, and await pauses execution until the promise resolves.
+
+Example:
+
+function fetchData() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Data fetched");
+    }, 2000);
+  });
+}
+
+async function displayData() {
+  console.log("Fetching data...");
+  const data = await fetchData(); // Waits until the promise resolves
+  console.log(data);
+}
+
+displayData();
+
+
+------------------------------------------------------------------------------------
+
+Callbacks
+
+A callback is a function passed as an argument to another function. 
+It is called after the operation completes.
+
+Example: 
+
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data fetched via callback");
+  }, 2000);
+}
+
+console.log("Fetching...");
+fetchData((data) => {
+  console.log(data);
+});
+
+
+------------------------------------------------------------------------
+
+Introduction to Promises
+
+A promise represents a value that may be available now, in the future, or never. It has three states:
+
+1.Pending: The operation is ongoing.
+2.Fulfilled: The operation completed successfully.
+3.Rejected: The operation failed.
+Example with .then, .catch, and .finally
+
+Example: 
+
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = true; // Change to false to simulate an error
+      if (success) {
+        resolve("Data fetched successfully");
+      } else {
+        reject("Failed to fetch data");
+      }
+    }, 2000);
+  });
+}
+
+fetchData()
+  .then((data) => {
+    console.log(data); // Executes if the promise is resolved
+  })
+  .catch((error) => {
+    console.error(error); // Executes if the promise is rejected
+  })
+  .finally(() => {
+    console.log("Operation complete"); // Executes in both cases
+  });
+
+
+-------------------------------------------------------------------
+
+
+Fetch API Basics for HTTP Requests
+
+The fetch API is used to make HTTP requests and works with promises. 
+It provides an easy way to retrieve resources over a network.
+
+Example:
+
+const url = "https://jsonplaceholder.typicode.com/posts";
+
+fetch(url)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    return response.json(); // Parse JSON response
+  })
+  .then((data) => {
+    console.log("Fetched data:", data);
+  })
+  .catch((error) => {
+    console.error("Fetch error:", error);
+  });
+
+
+Asynchronous operations don't block the execution of other code.
+Use callbacks for simple scenarios but switch to promises or async/await for cleaner, more manageable code.
+Use .then, .catch, and .finally to handle promise resolution and rejection.
+The Fetch API simplifies making HTTP requests, and the response needs to be parsed (e.g., response.json()).
+
+
+

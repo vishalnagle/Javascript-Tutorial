@@ -39,6 +39,7 @@ Try-catch-finally
 Throwing custom errors
 
 (7). Basic Asynchronous JavaScript
+Async Await
 Callbacks
 Introduction to Promises (then, catch, finally)
 Fetch API basics for HTTP requests
