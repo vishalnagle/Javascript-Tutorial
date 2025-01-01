@@ -1,0 +1,187 @@
+OOPS in javascript
+
+Object-Oriented Programming (OOP) is a programming paradigm that organizes code using objects, which are instances of classes. 
+In JavaScript, OOP revolves around objects and the principles of encapsulation, inheritance, and polymorphism. 
+Here's a breakdown of OOP concepts in JavaScript with easy-to-understand examples:
+
+1. Encapsulation
+
+Encapsulation refers to bundling data (properties) and behavior (methods) together in an object, keeping them safe from outside interference. 
+It allows objects to manage their own state.
+
+Example:
+class Car {
+  constructor(brand, color) {
+    this.brand = brand; // Public property
+    this.color = color; // Public property
+  }
+
+  startEngine() {
+    console.log(`${this.brand} engine started!`);
+  }
+
+  #privateMethod() { // Private method (ES6 feature)
+    console.log("This is a private method.");
+  }
+}
+
+const myCar = new Car("Toyota", "Red");
+myCar.startEngine(); // Output: Toyota engine started!
+// myCar.#privateMethod(); // Error: Private method cannot be accessed outside the class
+
+Here, the #privateMethod cannot be accessed from outside the class, encapsulating the internal behavior.
+
+
+2. Inheritance
+
+Inheritance allows one class (child) to acquire properties and methods of another class (parent). 
+It promotes code reuse.
+
+Example: 
+
+class Vehicle {
+  constructor(type, speed) {
+    this.type = type;
+    this.speed = speed;
+  }
+
+  move() {
+    console.log(`This ${this.type} is moving at ${this.speed} km/h.`);
+  }
+}
+
+class Bike extends Vehicle {
+  constructor(speed, brand) {
+    super("Bike", speed); // Call the parent class constructor
+    this.brand = brand;
+  }
+
+  ringBell() {
+    console.log("Ring ring!");
+  }
+}
+
+const myBike = new Bike(20, "Hero");
+myBike.move(); // Output: This Bike is moving at 20 km/h.
+myBike.ringBell(); // Output: Ring ring!
+
+The Bike class inherits the move method from the Vehicle class.
+
+3. Polymorphism
+
+Polymorphism allows objects to share methods while customizing behavior. 
+This is often achieved by method overriding in JavaScript.
+
+Example: 
+
+class Animal {
+  sound() {
+    console.log("This animal makes a sound.");
+  }
+}
+
+class Dog extends Animal {
+  sound() {
+    console.log("The dog barks.");
+  }
+}
+
+class Cat extends Animal {
+  sound() {
+    console.log("The cat meows.");
+  }
+}
+
+const myDog = new Dog();
+const myCat = new Cat();
+
+myDog.sound(); // Output: The dog barks.
+myCat.sound(); // Output: The cat meows.
+
+Here, the sound method behaves differently depending on the object type.
+
+
+4. Abstraction
+
+Abstraction hides complex implementation details and exposes only the necessary functionality to the user.
+
+Example:
+
+class Shape {
+  constructor(name) {
+    this.name = name;
+  }
+
+  calculateArea() {
+    throw new Error("This method must be implemented in a subclass.");
+  }
+}
+
+class Circle extends Shape {
+  constructor(radius) {
+    super("Circle");
+    this.radius = radius;
+  }
+
+  calculateArea() {
+    return Math.PI * this.radius * this.radius;
+  }
+}
+
+const myCircle = new Circle(5);
+console.log(`Area of the circle: ${myCircle.calculateArea()}`); // Output: Area of the circle: 78.53981633974483
+
+The Shape class provides a template, and the Circle class implements the calculateArea method.
+
+
+5. Class and Object
+
+Classes are blueprints for creating objects. Objects are instances of classes.
+
+Example:
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  greet() {
+    console.log(`Hi, my name is ${this.name} and I am ${this.age} years old.`);
+  }
+}
+
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 30);
+
+person1.greet(); // Output: Hi, my name is Alice and I am 25 years old.
+person2.greet(); // Output: Hi, my name is Bob and I am 30 years old.
+
+
+6. Prototype-Based Inheritance
+
+JavaScript's OOP is prototype-based, meaning objects can inherit properties and methods from other objects via prototypes.
+
+Example:
+
+function Animal(name) {
+  this.name = name;
+}
+
+Animal.prototype.eat = function () {
+  console.log(`${this.name} is eating.`);
+};
+
+const dog = new Animal("Dog");
+dog.eat(); // Output: Dog is eating.
+
+
+Real-World Analogy:
+
+Class: A blueprint for a house.
+Object: A house built using the blueprint.
+Encapsulation: The house has doors and windows to control access to the interior.
+Inheritance: A villa inherits features of a house but adds its own features.
+Polymorphism: Different houses can have different doorbell sounds.
+Abstraction: You press a button to turn on lights without worrying about wiring.
+These principles make code organized, reusable, and easier to maintain.
