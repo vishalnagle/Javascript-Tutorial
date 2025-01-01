@@ -1,0 +1,170 @@
+
+1. Advanced Functions
+
+Functions in JavaScript are first-class citizens, meaning they can be stored in variables, passed as arguments, and returned from other functions. 
+This makes JavaScript a very functional language.
+
+Example: Storing functions in variables
+
+const greet = function(name) {
+    return `Hello, ${name}!`;
+};
+
+console.log(greet('Vishal')); // Output: Hello, Vishal!
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Higher-Order Functions
+
+A higher-order function is a function that takes another function as an argument, returns a function, or both. 
+This enables functional programming patterns.
+
+Example: Array map (Takes a function as an argument)
+
+const numbers = [1, 2, 3, 4];
+const squaredNumbers = numbers.map(num => num * num);
+
+console.log(squaredNumbers); // Output: [1, 4, 9, 16]
+
+
+
+Example: Returning a function
+
+function multiplier(factor) {
+    return function(number) {
+        return number * factor;
+    };
+}
+
+const double = multiplier(2);
+console.log(double(5)); // Output: 10
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+3. Closures in Detail
+
+A closure is created when a function "remembers" the variables from its lexical scope even when executed outside that scope.
+
+Example: Closure to maintain a private counter
+
+function counter() {
+    let count = 0;
+
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const increment = counter();
+console.log(increment()); // Output: 1
+console.log(increment()); // Output: 2
+console.log(increment()); // Output: 3
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+4. Recursion
+
+Recursion is a process in which a function calls itself to solve a problem. 
+It’s often used to solve problems that can be broken down into smaller, similar sub-problems.
+
+Example: Factorial calculation using recursion
+
+function factorial(n) {
+    if (n === 0) {
+        return 1;
+    }
+    return n * factorial(n - 1);
+}
+
+console.log(factorial(5)); // Output: 120
+
+
+Example: Fibonacci sequence
+
+function fibonacci(n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+console.log(fibonacci(6)); // Output: 8
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+5. Function Currying
+
+Currying is the process of transforming a function with multiple arguments into a sequence of functions, each taking a single argument.
+
+Example: Basic Currying
+
+function add(a) {
+    return function(b) {
+        return function(c) {
+            return a + b + c;
+        };
+    };
+}
+
+console.log(add(1)(2)(3)); // Output: 6
+
+
+Example: Currying with arrow functions
+
+const multiply = a => b => c => a * b * c;
+
+console.log(multiply(2)(3)(4)); // Output: 24
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Debouncing and Throttling
+
+Both debouncing and throttling are techniques to control the rate at which a function executes, commonly used in event handling.
+
+Debouncing
+
+Ensures that a function runs after a specified delay has passed since the last call. Useful for input validation or resize events.
+
+Example:
+
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+const onResize = debounce(() => console.log('Resized!'), 300);
+window.addEventListener('resize', onResize);
+
+
+Throttling
+
+Ensures that a function runs at most once in a specified interval, regardless of how many times it is called. 
+Useful for scroll events.
+
+Example:
+
+function throttle(func, interval) {
+    let lastTime = 0;
+    return function(...args) {
+        const now = Date.now();
+        if (now - lastTime >= interval) {
+            func.apply(this, args);
+            lastTime = now;
+        }
+    };
+}
+
+const onScroll = throttle(() => console.log('Scrolled!'), 500);
+window.addEventListener('scroll', onScroll);
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+
