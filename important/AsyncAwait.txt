@@ -135,4 +135,134 @@ Use .then, .catch, and .finally to handle promise resolution and rejection.
 The Fetch API simplifies making HTTP requests, and the response needs to be parsed (e.g., response.json()).
 
 
+-----------------------------------------------------------------------------------------------------------------------
+
+Callback Hell in JavaScript
+
+Callback hell is a scenario where asynchronous functions are nested within each other, leading to hard-to-read and maintain code. 
+Here's how it happens and how to avoid it in JavaScript.
+
+
+Example of Callback Hell:
+
+function getUserData(userId, callback) {
+  setTimeout(() => {
+    console.log("Fetched user data");
+    callback({ id: userId, name: "John" });
+  }, 1000);
+}
+
+function getOrders(userId, callback) {
+  setTimeout(() => {
+    console.log("Fetched orders");
+    callback([{ id: 1 }, { id: 2 }]);
+  }, 1000);
+}
+
+function getOrderDetails(orderId, callback) {
+  setTimeout(() => {
+    console.log("Fetched order details");
+    callback({ orderId, product: "Laptop" });
+  }, 1000);
+}
+
+function sendOrderDetails(details, callback) {
+  setTimeout(() => {
+    console.log("Sent order details");
+    callback("Success");
+  }, 1000);
+}
+
+// Callback Hell Example
+getUserData(1, (user) => {
+  getOrders(user.id, (orders) => {
+    getOrderDetails(orders[0].id, (details) => {
+      sendOrderDetails(details, (response) => {
+        console.log("Order processing completed:", response);
+      });
+    });
+  });
+});
+
+
+
+How to Avoid Callback Hell
+
+1. Using Promises
+
+Promises allow chaining and make the code more readable.
+
+function getUserData(userId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Fetched user data");
+      resolve({ id: userId, name: "John" });
+    }, 1000);
+  });
+}
+
+function getOrders(userId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Fetched orders");
+      resolve([{ id: 1 }, { id: 2 }]);
+    }, 1000);
+  });
+}
+
+function getOrderDetails(orderId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Fetched order details");
+      resolve({ orderId, product: "Laptop" });
+    }, 1000);
+  });
+}
+
+function sendOrderDetails(details) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      console.log("Sent order details");
+      resolve("Success");
+    }, 1000);
+  });
+}
+
+// Using Promises
+getUserData(1)
+  .then((user) => getOrders(user.id))
+  .then((orders) => getOrderDetails(orders[0].id))
+  .then((details) => sendOrderDetails(details))
+  .then((response) => {
+    console.log("Order processing completed:", response);
+  })
+  .catch((error) => {
+    console.error("Error occurred:", error);
+  });
+
+
+2. Using async/await
+async/await syntax further simplifies the code and improves readability.
+
+async function processOrder() {
+  try {
+    const user = await getUserData(1);
+    const orders = await getOrders(user.id);
+    const details = await getOrderDetails(orders[0].id);
+    const response = await sendOrderDetails(details);
+    console.log("Order processing completed:", response);
+  } catch (error) {
+    console.error("Error occurred:", error);
+  }
+}
+
+processOrder();
+
+
+Key Benefits of Avoiding Callback Hell
+Improved Readability: Code is flat and easier to follow.
+Better Error Handling: Errors can be caught and managed with .catch in Promises or try-catch in async/await.
+Scalability: Adding or modifying code is straightforward.
+Using Promises or async/await is the modern and recommended way to handle asynchronous operations in JavaScript.
+
 
