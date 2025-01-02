@@ -1,0 +1,165 @@
+
+1. Prototypes and Object-Oriented JavaScript
+
+JavaScript uses prototypes to share properties and methods between objects. 
+Every object in JavaScript has an internal link to another object called its prototype.
+
+Prototype Chain: When you try to access a property of an object, 
+JavaScript first looks at the object itself. If the property is not found, it looks at the object's prototype, then the prototype’s prototype, and so on, until it reaches the end of the chain (usually null).
+
+Example:
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayHello = function () {
+  console.log(`Hello, my name is ${this.name}`);
+};
+
+const person1 = new Person("Vishal");
+person1.sayHello(); // Output: Hello, my name is Vishal
+
+Here, sayHello is shared among all Person objects via the prototype.
+
+2. Prototypal Inheritance
+
+In JavaScript, objects can inherit properties and methods from another object via their prototype.
+
+Example:
+
+const animal = {
+  sound: "generic sound",
+  makeSound() {
+    console.log(this.sound);
+  },
+};
+
+const dog = Object.create(animal);
+dog.sound = "Bark";
+dog.makeSound(); // Output: Bark
+
+Here, dog inherits the makeSound method from animal.
+
+
+3. Object.create and Object.assign
+
+Object.create
+
+This method creates a new object with the specified prototype.
+
+Example:
+
+const car = {
+  start() {
+    console.log("Car started");
+  },
+};
+
+const tesla = Object.create(car);
+tesla.start(); // Output: Car started
+
+Object.assign
+
+This method copies properties from one or more objects into a target object.
+
+Example:
+
+const obj1 = { a: 1 };
+const obj2 = { b: 2 };
+const combined = Object.assign({}, obj1, obj2);
+console.log(combined); // Output: { a: 1, b: 2 }
+
+
+4. Classes and Constructors
+
+A constructor is a function used to create objects and set their properties. 
+Classes are a modern way to define constructors and methods.
+
+Example:
+
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  sayHello() {
+    console.log(`Hi, I am ${this.name} and I am ${this.age} years old.`);
+  }
+}
+
+const person2 = new Person("Vishal", 30);
+person2.sayHello(); // Output: Hi, I am Vishal and I am 30 years old.
+
+
+5. Static and Instance Methods
+
+Instance Methods: Belong to individual objects and require an instance to call them.
+
+Static Methods: Belong to the class itself and are called on the class, not instances.
+
+Example:
+
+class MathUtils {
+  static add(a, b) {
+    return a + b;
+  }
+}
+
+console.log(MathUtils.add(5, 3)); // Output: 8
+
+
+6. this Keyword
+
+The value of this refers to the object that is calling the function. 
+It behaves differently depending on how the function is called.
+
+Example:
+
+function showThis() {
+  console.log(this);
+}
+
+showThis(); // In strict mode: undefined, otherwise: global object
+
+const obj = { name: "Vishal", showThis };
+obj.showThis(); // Output: { name: "Vishal", showThis: [Function: showThis] }
+
+
+7. Call, Apply, and Bind
+
+These methods explicitly set the value of this.
+
+call
+
+Calls a function with a specific this value and arguments.
+
+Example:
+
+function greet(greeting) {
+  console.log(`${greeting}, my name is ${this.name}`);
+}
+
+const user = { name: "Vishal" };
+greet.call(user, "Hello"); // Output: Hello, my name is Vishal
+
+
+apply
+
+Similar to call, but arguments are passed as an array.
+
+Example:
+
+greet.apply(user, ["Hi"]); // Output: Hi, my name is Vishal
+
+
+bind
+
+Creates a new function with this permanently set.
+
+Example:
+
+const boundGreet = greet.bind(user);
+boundGreet("Hey"); // Output: Hey, my name is Vishal
+
