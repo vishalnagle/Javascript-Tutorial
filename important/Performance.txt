@@ -1,0 +1,125 @@
+
+1. Performance Optimization in JavaScript
+
+Performance optimization ensures that your JavaScript code runs smoothly and efficiently, especially for large applications.
+
+Techniques:
+
+Minimizing DOM Manipulation: Direct interaction with the DOM can be slow. Use virtual DOM libraries like React or update only necessary parts of the DOM.
+Debouncing and Throttling: Control the rate of function execution in events like scroll or resize.
+Code Splitting: Split your code into smaller chunks to load only what is needed at the time.
+
+Example: Debouncing
+
+let debounceTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(debounceTimer);
+  debounceTimer = setTimeout(() => {
+    console.log('Resize event handled!');
+  }, 300);
+});
+
+This ensures that the resize event is handled only after the user stops resizing for 300ms.
+
+
+2. Memory Leaks in JavaScript
+
+A memory leak happens when your application uses memory that is no longer needed but doesn't release it, causing higher memory usage over time.
+
+Common Causes:
+
+Unreferenced Objects in Closures: Objects referenced in closures may remain in memory.
+Event Listeners Not Removed: Listeners not detached when a component is destroyed can cause leaks.
+Global Variables: Variables declared globally persist throughout the application's lifecycle.
+
+Example of a Memory Leak:
+
+function createLeak() {
+  const element = document.getElementById('button');
+  element.addEventListener('click', () => {
+    console.log('Button clicked!');
+  });
+}
+
+Here, the event listener remains attached even after element is removed.
+
+Solution:
+
+Always remove event listeners:
+
+function createLeak() {
+  const element = document.getElementById('button');
+  const handleClick = () => {
+    console.log('Button clicked!');
+  };
+  element.addEventListener('click', handleClick);
+
+  // Clean up
+  return () => {
+    element.removeEventListener('click', handleClick);
+  };
+}
+
+
+3. Garbage Collection in JavaScript
+
+Garbage collection automatically frees up memory by removing objects that are no longer reachable in the code.
+
+Key Concepts:
+
+Reachable Objects: Objects are considered reachable if they are referenced from the root (e.g., window, global variables, or the call stack).
+Mark-and-Sweep Algorithm: The garbage collector "marks" objects that are still reachable and "sweeps" away those that are not.
+
+Example:
+
+function demo() {
+  let obj = { name: 'Vishal' };
+  console.log(obj.name);
+  // obj is no longer needed
+  obj = null; // Eligible for garbage collection
+}
+demo();
+
+
+4. Lazy Loading in JavaScript
+Lazy loading delays loading non-essential resources until they are needed, improving performance by reducing the initial load time.
+
+Example: Lazy Loading an Image
+
+<img src="placeholder.jpg" data-src="actual-image.jpg" alt="Lazy Image" class="lazy">
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const lazyImages = document.querySelectorAll('.lazy');
+    lazyImages.forEach(img => {
+      img.src = img.dataset.src; // Load the actual image
+    });
+  });
+</script>
+
+
+This technique ensures that heavy images are loaded only when required.
+
+
+5. Efficient DOM Manipulation
+
+Frequent DOM updates can slow down your application. 
+Efficient DOM manipulation reduces unnecessary reflows and repaints.
+
+Tips:
+
+Batch DOM Updates: Minimize updates by grouping them together.
+Use Document Fragments: Insert multiple elements into the DOM at once.
+
+Example: Using a Document Fragment
+
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < 100; i++) {
+  const div = document.createElement('div');
+  div.textContent = `Item ${i}`;
+  fragment.appendChild(div);
+}
+document.body.appendChild(fragment); // Single DOM update
+
+By applying these techniques, you can build efficient and optimized JavaScript applications!
+
+
