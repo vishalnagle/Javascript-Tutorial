@@ -1,0 +1,179 @@
+
+1. Generators and Iterators
+
+Generators
+
+A generator is a special type of function in JavaScript that can be paused and resumed. 
+Generators are defined using the function* syntax. 
+Instead of returning a value, they generate multiple values, one at a time, using the yield keyword.
+
+Example:
+
+function* numberGenerator() {
+  yield 1; // Pauses here and returns 1
+  yield 2; // Pauses here and returns 2
+  yield 3; // Pauses here and returns 3
+}
+
+const generator = numberGenerator();
+
+console.log(generator.next()); // { value: 1, done: false }
+console.log(generator.next()); // { value: 2, done: false }
+console.log(generator.next()); // { value: 3, done: false }
+console.log(generator.next()); // { value: undefined, done: true }
+
+
+value: The current value of the generator.
+done: Indicates if the generator is finished.
+
+
+Iterators
+
+An iterator is an object that adheres to the "iterator protocol." 
+It has a next() method that returns an object with two properties: value and done.
+
+Example:
+
+const numbers = [10, 20, 30];
+const iterator = numbers[Symbol.iterator]();
+
+console.log(iterator.next()); // { value: 10, done: false }
+console.log(iterator.next()); // { value: 20, done: false }
+console.log(iterator.next()); // { value: 30, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+
+
+Use Case of Generators and Iterators:
+
+Handling infinite sequences (e.g., numbers, data streams).
+Simplifying asynchronous workflows.
+
+2. Sets and Maps
+
+Sets
+
+A Set is a collection of unique values. It does not allow duplicate values.
+
+Example:
+
+const set = new Set();
+
+set.add(1);
+set.add(2);
+set.add(1); // Duplicate, won't be added
+
+console.log(set); // Set { 1, 2 }
+console.log(set.has(1)); // true
+console.log(set.size); // 2
+
+set.delete(1);
+console.log(set); // Set { 2 }
+
+
+Key Features:
+
+Values in a set are unique.
+Fast for adding, deleting, and checking the existence of an element.
+
+
+Maps
+
+A Map is a collection of key-value pairs. Unlike objects, keys can be of any data type.
+
+Example:
+
+const map = new Map();
+
+map.set('name', 'Vishal');
+map.set(1, 'One');
+map.set(true, 'Boolean');
+
+console.log(map.get('name')); // Vishal
+console.log(map.has(1)); // true
+console.log(map.size); // 3
+
+map.delete(1);
+console.log(map); // Map { 'name' => 'Vishal', true => 'Boolean' }
+
+
+Key Features:
+
+Keys are not restricted to strings or symbols.
+Iterates in the order of insertion.
+
+
+3. WeakSet and WeakMap
+
+WeakSet
+
+A WeakSet is similar to a Set, but it only stores objects (no primitive values). 
+Objects in a WeakSet are held "weakly," meaning they can be garbage collected if there are no other references.
+
+Example:
+
+let obj1 = { name: 'Vishal' };
+let obj2 = { name: 'John' };
+
+const weakSet = new WeakSet();
+weakSet.add(obj1);
+weakSet.add(obj2);
+
+console.log(weakSet.has(obj1)); // true
+
+obj1 = null; // The object is eligible for garbage collection
+// obj1 will be removed from the WeakSet automatically
+
+
+WeakMap
+
+A WeakMap is like a Map, but its keys must be objects. 
+Keys in a WeakMap are also held weakly, allowing for garbage collection.
+
+Example:
+
+let key = { id: 1 };
+const weakMap = new WeakMap();
+
+weakMap.set(key, 'Vishal');
+console.log(weakMap.get(key)); // Vishal
+
+key = null; // Key is eligible for garbage collection
+// weakMap automatically removes the entry
+
+Key Features:
+
+Prevents memory leaks by allowing garbage collection.
+Used in private data storage for objects.
+
+
+
+4. Symbols and Their Use Cases
+
+A Symbol is a unique and immutable data type. 
+It is often used as keys for object properties to avoid name collisions.
+
+Example:
+
+const sym1 = Symbol('id');
+const sym2 = Symbol('id');
+
+console.log(sym1 === sym2); // false (each symbol is unique)
+
+const obj = {
+  [sym1]: 'Value1',
+  [sym2]: 'Value2',
+};
+
+console.log(obj[sym1]); // Value1
+console.log(obj[sym2]); // Value2
+
+
+Use Cases:
+
+Unique Property Keys: Prevents property name conflicts in objects, especially when integrating third-party libraries.
+Constants: Symbols can be used as constants for enums.
+Meta-programming: Built-in symbols like Symbol.iterator or Symbol.toStringTag are used to customize object behavior.
+
+These concepts are essential for mastering JavaScript and are widely used in modern applications.
+
+
